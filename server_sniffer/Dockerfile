@@ -15,26 +15,4 @@ WORKDIR /home/server_sniffer
 # Download and install server_sniffer
 RUN git clone https://github.com/GiuDaquan/server_sniffer.git
 WORKDIR /home/server_sniffer/server_sniffer/
-RUN pip3 install --upgrade pip && pip3 install -r ./requirements.txt
-
-
-
-
-#
-#COPY /home/giuseppe-daqanno
-#
-#
-## set work directory
-#WORKDIR /usr/src/server_sniffer
-#
-## set environment variables
-#ENV PYTHONDONTWRITEBYTECODE 1
-#ENV PYTHONUNBUFFERED 1
-#
-## install dependencies
-#RUN pip install --upgrade pip
-#COPY ./requirements.txt .
-#RUN pip install -r requirements.txt
-#
-## copy project
-#COPY . .
+RUN pip3 install --upgrade pip && pip3 install -r requirements.txt

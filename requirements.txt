@@ -1,2 +1,3 @@
-Django                        
+Django
+more-itertools                        
 server_sniffer_utils @ git+https://github.com/GiuDaquan/server_sniffer_utils
