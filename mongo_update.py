@@ -5,7 +5,7 @@ import server_sniffer_utils.ansible_gatherer as ag
 import server_sniffer_utils.mongo_helper as mh
 
 ROTATION = 30
-MONGO_HOST = "127.0.0.1"
+MONGO_HOST = "mongo"
 MONGO_PORT = 27017
 DB_NAME = "server_sniffer"
 NUM_WORKING_PROCS = 10

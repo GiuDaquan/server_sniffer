@@ -12,6 +12,7 @@ RUN useradd -ms /bin/bash server_sniffer
 USER server_sniffer
 WORKDIR /home/server_sniffer
 
+RUN ls
 # Download and install server_sniffer
 RUN git clone https://github.com/GiuDaquan/server_sniffer.git
 WORKDIR /home/server_sniffer/server_sniffer/
