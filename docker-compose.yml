@@ -3,9 +3,7 @@ services:
   django:
     build: 
       context: ./server_sniffer
-      ssh: 
-        - default
-    command: python3 manage.py runserver
+    command: python3 manage.py runserver 0.0.0.0:8000
     #volumes:
     #- /home/giuseppe-daquanno/.ssh:/home/server_sniffer/.ssh
     ports:
@@ -23,4 +21,5 @@ services:
       - 27017:27017
 
 volumes:
+  django_data:
   mongo_data:

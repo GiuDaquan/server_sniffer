@@ -6,8 +6,13 @@ import server_sniffer_utils.mongo_helper as mh
 from django.shortcuts import render
 from more_itertools import chunked
 
-mongo_helper = mh.MongoHelper('server_sniffer', '127.0.0.1', 27017)
-ansible_gatherer = ag.AnsibleGatherer('/home/giuseppe-daquanno/Desktop/inventory.yaml')
+MONGO_HOST = "127.0.0.1"
+MONGO_PORT = 27017
+DB_NAME = "server_sniffer"
+INVENTORY_FILE = "inventory.yaml"
+
+mongo_helper = mh.MongoHelper(DB_NAME, MONGO_HOST, MONGO_PORT)
+ansible_gatherer = ag.AnsibleGatherer(INVENTORY_FILE)
 
 
 # Create your views here.
