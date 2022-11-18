@@ -1,13 +1,15 @@
 import datetime
+import os
 from multiprocessing import Pool
 
 import server_sniffer_utils.ansible_gatherer as ag
 import server_sniffer_utils.mongo_helper as mh
 
+MONGO_HOST = os.environ.get("MONGO_HOST")
+MONGO_PORT = os.environ.get("MONGO_PORT")
+DB_NAME = os.environ.get("DB_NAME")
+
 ROTATION = 30
-MONGO_HOST = "mongo"
-MONGO_PORT = 27017
-DB_NAME = "server_sniffer"
 NUM_WORKING_PROCS = 10
 
 def main():

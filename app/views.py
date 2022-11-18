@@ -6,9 +6,9 @@ import server_sniffer_utils.mongo_helper as mh
 from django.shortcuts import render
 from more_itertools import chunked
 
-MONGO_HOST = "127.0.0.1"
-MONGO_PORT = 27017
-DB_NAME = "server_sniffer"
+MONGO_HOST = os.environ.get("MONGO_HOST")
+MONGO_PORT = os.environ.get("MONGO_PORT")
+DB_NAME = os.environ.get("DB_NAME")
 INVENTORY_FILE = "inventory.yaml"
 
 mongo_helper = mh.MongoHelper(DB_NAME, MONGO_HOST, MONGO_PORT)
