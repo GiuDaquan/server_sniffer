@@ -1,0 +1,27 @@
+<h4 class="text-bg-success">Files Log</h4>
+<table class="table border align-middle">
+    {% for file_key, file_info in log_files.items %}
+    {% if forloop.counter0 == 0%}
+    <thead>
+        <tr>
+            <th>File</th>
+            {% for key in file_info.keys %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    {% endfor %}
+    <tbody>
+        {% for file_key, file_info in log_files.items %}
+        <tr>
+            <th>{{ file_key }}</th>
+            {% for key, val in file_info.items %}
+            <td>
+            {% if val %} {{ val }} {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

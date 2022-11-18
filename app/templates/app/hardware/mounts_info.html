@@ -1,0 +1,8 @@
+<h4 class="text-bg-primary">Punti di Mount</h4>
+    {% for mount in mounts.values %}
+    <ul class="list-group border">
+    {% for mount_key, mount_info in mount.items%}
+        <li class="text-break list-group-item"><b>{{ mount_key }}</b>: {{ mount_info }}</li>
+    {%endfor%}
+    </ul>
+    {% endfor %}

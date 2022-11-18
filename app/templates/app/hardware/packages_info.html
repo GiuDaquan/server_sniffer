@@ -1,0 +1,27 @@
+<h4 class="text-bg-primary">Pacchetti Software</h4>
+<table class="table border align-middle fs-7">
+    {% for pkg_key, pkg_info in packages.items %}
+    {% if forloop.counter0 == 0%}
+    <thead>
+        <tr>
+            <th>Pacchetto</th>
+            {% for key in pkg_info.keys %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    {% endfor %}
+    <tbody>
+        {% for pkg_key, pkg_info in packages.items %}
+        <tr>
+            <th>{{ pkg_key }}</th>
+            {% for key, val in pkg_info.items %}
+            <td class="text-break">
+            {{ val }}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

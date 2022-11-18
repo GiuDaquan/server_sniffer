@@ -1,0 +1,37 @@
+<h4 class="text-bg-primary">Interfacce</h4>
+<table class="table border align-middle">
+    {% for interface_key, interface_info in interfaces.items %}
+    {% if forloop.counter0 == 0%}
+    <thead>
+        <tr>
+            <th>Interfaccia</th>
+            {% for key in interface_info.keys %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    {% endfor %}
+    <tbody>
+        {% for interface_key, interface_info in interfaces.items %}
+        <tr>
+            <th>{{ interface_key }}</th>
+            {% for key, val in interface_info.items %}
+            <td>
+            {% if key == "IPv4" %}
+            <ul class="list-group">
+            {% for ip_key, ip_info in val.items %}
+                <li class="list-group-item">
+                    <b>{{ ip_key }}</b>: {% if ip_info %} {{ ip_info }} {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            {% if val %} {{ val }} {% endif %}
+            {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

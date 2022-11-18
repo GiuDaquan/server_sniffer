@@ -1,0 +1,56 @@
+<h4 class="text-bg-primary">Storage</h4>
+<table class="table border align-middle">
+    {% for storage_key, storage_info in storage.items %}
+    {% if forloop.counter0 == 0%}
+    <thead>
+        <tr>
+            <th>Dispositivo</th>
+            {% for key in storage_info.keys %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    {% endfor %}
+    <tbody>
+        {% for storage_key, storage_info in storage.items %}
+        <tr>
+            <th>{{ storage_key }}</th>
+            {% for key, val in storage_info.items %}
+            <td>
+            {% if key == "Partizioni" %}
+            <table class="table border align-middle">
+            {% for part_key, part_info in val.items %}
+            {% if forloop.counter0 == 0%}
+                <thead>
+                    <tr>
+                        <th>Partizione</th>
+                        {% for key in part_info.keys %}
+                        <th>{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                {% endif %}
+                {% endfor %}
+                <tbody>
+                    {% for part_key, part_info in val.items %}
+                    <tr>
+                        <th>{{ part_key }}</th>
+                        {% for key, val in part_info.items %}
+                        <td>
+                        {{ val }}
+                        </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            {% if val %} {{ val }} {% endif %}
+            {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

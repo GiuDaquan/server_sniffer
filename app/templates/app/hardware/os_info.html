@@ -1,0 +1,8 @@
+<h4 class="text-bg-primary">Sistema Operativo</h4>
+<ul class="list-group border">
+    {% for os_key, os_info in os.items %}
+    <li class="list-group-item"><b>{{ os_key }}</b>: {{ os_info }}</li>
+    {% endfor %}
+    <li class="list-group-item"><b>SELinux Status</b>: {{ selinux_status }}</li>
+    <li class="list-group-item"><b>Nagios Status</b>: {{ nagios_status }}</li>
+</ul>

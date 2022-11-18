@@ -1,0 +1,23 @@
+<div class="container h2 text-center my-5">
+    {{ server_name }} Info
+</div>
+
+<div class="container-fluid text-center">
+    <h3 class="text-bg-primary py-2">Hardware &#38; OS Info</h3>
+    <div class="row border-primary">
+        <div class="col border-primary">
+            {% include "frontend/hardware/cpu_ram_info.html" %}
+            <div class="my-2"></div>
+            {% include "frontend/hardware/os_info.html" %}
+            <div class="my-2"></div>
+            {% include "frontend/hardware/interfaces_info.html" %}
+            <div class="my-2"></div>
+            {% include "frontend/hardware/storage_info.html" %}
+            <div class="my-2"></div>
+            {% include "frontend/hardware/mounts_info.html" %}
+        </div>
+        <div class="col border-primary">
+            {% include "frontend/hardware/packages_info.html" %}
+        </div>
+    </div>
+</div>

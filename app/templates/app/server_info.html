@@ -1,0 +1,48 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+<div class="container-fluid text-center my-3">
+    <h3> {{ page_title }} </h3>
+    <div class="row">
+        <div id="old_info" class="col json-editor-container my-3">
+        </div>
+        <div id="new_info" class="col json-editor-container my-3">
+        </div>
+    </div>
+</div>
+
+<script>
+    function setJSONEditor() {
+        const old_info_container = document.getElementById("old_info")
+        const new_info_container = document.getElementById("new_info")
+    
+        const old_info_options = {
+            mode: "view",
+            name: "{{ old_datetime|escapejs }}"
+        }
+        const new_info_options = {
+            mode: "view",
+            name: "{{ new_datetime|escapejs }}"
+        }
+        const old_info_editor = new JSONEditor(old_info_container, old_info_options)
+        const new_info_editor = new JSONEditor(new_info_container, new_info_options)
+
+        decoded_old_info = "{{ old_server_info|escapejs }}"
+        decoded_new_info = "{{ new_server_info|escapejs }}"
+        json_old_info = JSON.parse(decoded_old_info)
+        json_new_info = JSON.parse(decoded_new_info)
+        
+        old_info_editor.set(json_old_info)
+        new_info_editor.set(json_new_info)
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.9.2/jsoneditor.min.js" 
+    integrity="sha512-MP2pEPP3BGw032ovuAsX6yTu7O4J6L3YTXuyq3IpR+LuwRun9BBjOeeIKgO3bRiNlI88x3oCVb9I1/1+xmvFIg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+
+<script>
+    window.onload = setJSONEditor()
+</script>
+{% endblock %}

@@ -1,0 +1,9 @@
+<h4 class="text-bg-primary">CPU &#38; RAM</h4>
+<ul class="list-group border">
+    {% for cpu_key, cpu_info in cpu.items %}
+    <li class="list-group-item"><b>{{ cpu_key }}</b>: {{ cpu_info }}</li>
+    {% endfor %}
+    {% for ram_key, ram_info in ram.items %}
+    <li class="list-group-item"><b>{{ ram_key }}</b>: {{ ram_info }} MB</li>
+    {% endfor %}
+</ul>

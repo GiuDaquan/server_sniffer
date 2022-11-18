@@ -1,0 +1,6 @@
+<h4 class="text-bg-success">Configurazione Service</h4>
+<ul class="list-group border">
+    {% for serv_conf_key, serv_conf_info in service_conf.items %}
+    <li class="list-group-item"><b>{{ serv_conf_key }}</b>: {{ serv_conf_info }}</li>
+    {% endfor %}
+</ul>

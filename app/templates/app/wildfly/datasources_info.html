@@ -1,0 +1,27 @@
+<h4 class="text-bg-success">Datasources</h4>
+<table class="table border align-middle">
+    {% for ds_key, ds_info in datasources.items %}
+    {% if forloop.counter0 == 0%}
+    <thead>
+        <tr>
+            <th>Datasource</th>
+            {% for key in ds_info.keys %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    {% endfor %}
+    <tbody>
+        {% for ds_key, ds_info in datasources.items %}
+        <tr>
+            <th>{{ ds_key }}</th>
+            {% for key, val in ds_info.items %}
+            <td class="text-break">
+            {{ val }}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

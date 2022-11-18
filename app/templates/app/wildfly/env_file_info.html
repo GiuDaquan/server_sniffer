@@ -1,0 +1,6 @@
+<h4 class="text-bg-success">File Environment</h4>
+<ul class="list-group border">
+    {% for env_file_key, env_file_info in env_file.items %}
+    <li class="list-group-item"><b>{{ env_file_key }}</b>: {{ env_file_info }}</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,31 @@
+<h4 class="text-bg-success">Utenti</h4>
+<table class="table border align-middle">
+    {% for user_key, user_info in users.items %}
+    {% if forloop.counter0 == 0%}
+    <thead>
+        <tr>
+            <th>Utente</th>
+            {% for key in user_info.keys %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    {% endfor %}
+    <tbody>
+        {% for user_key, user_info in users.items %}
+        <tr>
+            <th>{{ user_key }}</th>
+            {% for key, val in user_info.items %}
+            <td class="text-break">
+            {% if key == "Gruppi" or key == "Utenti"%}
+            {{ val|join:", " }}
+            {% else %}
+            {{ val }}
+            {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

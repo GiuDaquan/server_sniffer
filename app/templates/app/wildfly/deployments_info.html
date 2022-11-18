@@ -1,0 +1,58 @@
+<h4 class="text-bg-success">Deployments</h4>
+<table class="table border align-middle">
+    {% for dep_key, dep_info in deployments.items %}
+    {% if forloop.counter0 == 0%}
+    <thead>
+        <tr>
+            <th>Deployment</th>
+            {% for key in dep_info.keys %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    {% endif %}
+    {% endfor %}
+    <tbody>
+        {% for dep_key, dep_info in deployments.items %}
+        <tr>
+            <th>{{ dep_key }}</th>
+            {% for key, val in dep_info.items %}
+            <td class="text-break">
+                {% if key == "Log File" %}
+                <ul class="list-group">
+                {% for file_key, file_info in val.items %}
+                    <li class="list-group-item">
+                        <b>{{ file_key }}</b>: {% if file_info %} {{ file_info }} {% endif %}
+                    </li>
+                {% endfor %}
+                </ul>
+                {% elif key == "Struttura" %}
+                <table class="table border align-middle">
+                    <tbody>
+                        {% for struct_key, struct_info in val.items %}
+                        <tr>
+                            <th>{{ struct_key }}</th>
+                            <td>
+                            {{ struct_info|join:"<br> " }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% elif key == "Ruoli" or key == "Datasources" or key == "Context Root" %}
+                <ul class="list-group">
+                    {% for elem in val %}
+                    <li class="list-group-item">
+                        {{ elem }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                {% if val %} {{ val }} {% endif %}
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
