@@ -1,12 +1,10 @@
 services:
   
   django:
-    build: 
-      context: ./server_sniffer
-    command: bash -c " python3 mongo_update.py
-      && python3 manage.py runserver 0.0.0.0:8000"
-    #volumes:
-    #- /home/giuseppe-daquanno/.ssh:/home/server_sniffer/.ssh
+    build: ./docker/django
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - django_data:/home/server_sniffer/server_sniffer
     ports:
       - 8000:8000
     env_file:
@@ -21,5 +19,20 @@ services:
     ports:
       - 27017:27017
 
+  cron:
+    build: ./docker/cron
+    command: bash -c "chown -R root:root /root/.ssh && cron -f"
+    volumes:
+      - django_data:/usr/src/server_sniffer:rw
+      - ./:/home/test/server_sniffer/
+      - /home/giuseppe-daquanno/.ssh:/root/.ssh:rw
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo
+      - django
+
 volumes:
+  django_data:
   mongo_data:
+  ssh_data:
