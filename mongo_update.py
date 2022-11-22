@@ -14,6 +14,7 @@ DB_NAME = os.environ.get("DB_NAME")
 ROTATION = 30
 NUM_WORKING_PROCS = 10
 INVENTORY_FILE_DIR = os.path.abspath(os.path.dirname(__file__))
+print(INVENTORY_FILE_DIR)
 
 def main():
     mongo_helper = mh.MongoHelper(DB_NAME, MONGO_HOST, MONGO_PORT)

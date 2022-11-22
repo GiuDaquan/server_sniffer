@@ -27,7 +27,7 @@ services:
     volumes:
       - django_data:/usr/src/server_sniffer:rw
       - ./:/home/test/server_sniffer/
-      - /home/giuseppe-daquanno/.ssh:/root/.ssh:rw
+      - .ssh:/root/.ssh:rw
     env_file:
       - ./.env
     depends_on:
