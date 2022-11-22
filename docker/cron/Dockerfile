@@ -9,7 +9,6 @@ RUN apt update && apt upgrade -y && apt install python3 python3-pip cron git ans
 
 # Install dependencies
 WORKDIR /usr/src/server_sniffer
-RUN ls -l
 RUN pip3 install --upgrade pip && \
     pip3 install "server_sniffer_utils @ git+https://github.com/GiuDaquan/server_sniffer_utils"
 
