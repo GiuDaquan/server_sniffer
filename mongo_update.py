@@ -8,12 +8,12 @@ import server_sniffer_utils.ansible_gatherer as ag
 import server_sniffer_utils.mongo_helper as mh
 
 MONGO_HOST = os.environ.get("MONGO_HOST")
-MONGO_PORT = os.environ.get("MONGO_PORT")
+MONGO_PORT = int(os.environ.get("MONGO_PORT"))
 DB_NAME = os.environ.get("DB_NAME")
 
 INVENTORY_FILE_DIR = os.path.abspath(os.path.dirname(__file__))
-NUM_WORKING_PROCS = os.environ.get("NUM_WORKING_PROCS")
-ROTATION = os.environ.get("ROTATION")
+NUM_WORKING_PROCS = int(os.environ.get("NUM_WORKING_PROCS"))
+ROTATION = int(os.environ.get("ROTATION"))
 
 
 def main():

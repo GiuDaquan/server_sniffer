@@ -23,8 +23,7 @@ services:
     build: ./docker/cron
     command: bash -c "chown -R root:root /root/.ssh && 
                       printenv | grep -v "no_proxy" >> /etc/environment &&
-                      cat mongo_update.py" 
-                      #cron -f"
+                      cron -f"
     volumes:
       - django_data:/usr/src/server_sniffer:rw
       - ./:/home/test/server_sniffer/
