@@ -17,4 +17,5 @@ RUN git clone https://github.com/GiuDaquan/server_sniffer.git
 
 # Install dependencies
 WORKDIR /home/server_sniffer/server_sniffer/
+ENV PATH="${PATH}:/home/server_sniffer/.local/bin"
 RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
