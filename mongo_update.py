@@ -11,10 +11,10 @@ MONGO_HOST = os.environ.get("MONGO_HOST")
 MONGO_PORT = os.environ.get("MONGO_PORT")
 DB_NAME = os.environ.get("DB_NAME")
 
-ROTATION = 30
-NUM_WORKING_PROCS = 10
-INVENTORY_FILE_DIR = os.path.abspath(os.path.dirname(__file__))
-print(INVENTORY_FILE_DIR)
+INVENTORY_FILE_PATH = os.environ.get("INVENTORY_FILE_PATH")
+NUM_WORKING_PROCS = os.environ.get("NUM_WORKING_PROCS")
+ROTATION = os.environ.get("ROTATION")
+
 
 def main():
     mongo_helper = mh.MongoHelper(DB_NAME, MONGO_HOST, MONGO_PORT)
@@ -31,7 +31,7 @@ def main():
 
     if (today_collection_name not in collection_names):
         mongo_helper.create_collection(today_collection_name)
-        ansible_gatherer = ag.AnsibleGatherer(os.path.join(INVENTORY_FILE_DIR, 'inventory.yaml'))
+        ansible_gatherer = ag.AnsibleGatherer(INVENTORY_FILE_PATH)
 
         with Pool(NUM_WORKING_PROCS) as p:
             docs = p.map(ansible_gatherer.gather_server_info, ansible_gatherer.get_server_names())
