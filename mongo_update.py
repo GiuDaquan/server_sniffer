@@ -32,6 +32,7 @@ def main():
     if (today_collection_name not in collection_names):
         mongo_helper.create_collection(today_collection_name)
         ansible_gatherer = ag.AnsibleGatherer(INVENTORY_FILE_PATH)
+        ansible_gatherer.get_server_names()
 
         with Pool(NUM_WORKING_PROCS) as p:
             docs = p.map(ansible_gatherer.gather_server_info, ansible_gatherer.get_server_names())
