@@ -5,19 +5,26 @@ services:
     command: gunicorn server_sniffer.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - django_data:/home/server_sniffer/server_sniffer
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     env_file:
       - ./.env
     depends_on:
       - mongo
 
+  nginx:
+    build: ./docker/nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - django
+
   mongo:
     image: mongo
     volumes:
       - mongo_data:/data/db
-    ports:
-      - 27017:27017
+    expose:
+      - 27017
 
   cron:
     build: ./docker/cron

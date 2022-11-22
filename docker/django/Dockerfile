@@ -13,6 +13,7 @@ USER server_sniffer
 WORKDIR /home/server_sniffer
 
 # Download and install server_sniffer
+RUN echo ""
 RUN git clone https://github.com/GiuDaquan/server_sniffer.git
 
 # Install dependencies
