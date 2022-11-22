@@ -3,6 +3,7 @@
 import datetime
 import os
 from multiprocessing import Pool
+import sys
 
 import server_sniffer_utils.ansible_gatherer as ag
 import server_sniffer_utils.mongo_helper as mh
@@ -32,7 +33,7 @@ def main():
     if (today_collection_name not in collection_names):
         mongo_helper.create_collection(today_collection_name)
         ansible_gatherer = ag.AnsibleGatherer(INVENTORY_FILE_PATH)
-        ansible_gatherer.get_server_names()
+        print(INVENTORY_FILE_PATH, file=sys.stderr)
 
         with Pool(NUM_WORKING_PROCS) as p:
             docs = p.map(ansible_gatherer.gather_server_info, ansible_gatherer.get_server_names())
