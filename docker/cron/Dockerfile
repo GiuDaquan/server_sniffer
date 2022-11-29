@@ -13,4 +13,4 @@ RUN pip3 install --upgrade pip && \
     pip3 install "server_sniffer_utils @ git+https://github.com/GiuDaquan/server_sniffer_utils"
 
 # Setup crontab
-RUN (crontab -l 2>/dev/null; echo "*0 0-23 * * * /usr/bin/python3 /usr/src/server_sniffer/mongo_update.py") | crontab -
+RUN (crontab -l 2>/dev/null; echo "*/1 * * * * /usr/bin/python3 /usr/src/server_sniffer/mongo_update.py") | crontab -
