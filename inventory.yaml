@@ -2,7 +2,7 @@ all:
   children:
     wildfly_servers:
       hosts:
-        J26tamm:
-    jboss_servers:
-      hosts:
-        J26tamm:
+        J26TAMM:
+        J14TPARL:
+        J16TAMM:
+        J14TAMM:
