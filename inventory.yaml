@@ -3,6 +3,6 @@ all:
     wildfly_servers:
       hosts:
         J26TAMM:
-        J14TPARL:
-        J16TAMM:
-        J14TAMM:
+        #J14TPARL:
+        #J16TAMM:
+        #J14TAMM:
