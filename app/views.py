@@ -6,7 +6,7 @@ import server_sniffer_utils.mongo_helper as mh
 from django.shortcuts import render
 from more_itertools import chunked
 
-MONGO_HOST = os.environ.get("MONGO_HOST")
+MONGO_HOST = "localhost" #os.environ.get("MONGO_HOST")
 MONGO_PORT = os.environ.get("MONGO_PORT")
 DB_NAME = os.environ.get("DB_NAME")
 INVENTORY_FILE = "inventory.yaml"
@@ -19,7 +19,10 @@ ansible_gatherer = ag.AnsibleGatherer(INVENTORY_FILE)
 
 def index(request):
     context = {}
-    CHUNK_SIZE = 10
+
+    today_date = datetime.date.today()
+    today_collection_name = mongo_helper.get_collection_name(today_date)
+    servers_info = mongo_helper.get_documents(today_collection_name)
     
     server_names = ansible_gatherer.get_server_names()
     servers_names_chunks = list(chunked(server_names, CHUNK_SIZE))

@@ -1,7 +1,7 @@
 services:
   
   django:
-    build: ./docker/django
+    build: ./
     command: gunicorn server_sniffer.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - django_data:/home/server_sniffer/server_sniffer
@@ -36,6 +36,7 @@ services:
     volumes:
       - django_data:/usr/src/server_sniffer
       - .ssh:/root/.ssh
+      - ./cron.log:/cron.log
     env_file:
       - ./.env
     depends_on:
